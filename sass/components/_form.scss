@@ -1,0 +1,92 @@
+.form{
+    margin-top: 5rem;
+    &-group:not(:last-child){
+        margin-bottom: 3rem;
+    }
+
+    &__input-text{
+        width: 90%;
+        display: block;
+        border: none;
+        padding: 1.6rem;
+        font-family: inherit;
+        font-size: 1.5rem;
+        transition: all .19s;
+        @include responsive(tab-pro){
+            width: 100%;
+        }
+        &:focus{
+           outline: none;
+           box-shadow: 1px -1px 6px rgba($color-dark,.4);
+           border-bottom: 3px solid $color-green-dark;           &:invalid{
+            border-bottom: 3px solid $color-secondary-dark;
+           }
+         }  
+    }
+    
+    &__label-text{
+        margin-left: 1.2rem;
+        font-family: inherit;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: grey;
+        opacity: 1;
+        transition: all .5s;
+        display: block;
+    }
+    &__input-text:placeholder-shown + &__label-text{
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+    }
+    &__radio-group{
+        display: inline-block;
+        width: 49%;
+        position: relative;
+        @include responsive(tab-pro){
+            width: 100%;
+            padding-bottom: 1rem;
+        }
+    }
+
+    &__radio-input{
+        display: none;
+    }
+    &__radio-label{
+        padding-left: 4rem;
+        cursor: pointer;
+    }
+    &__radio-button{
+        border: 3px solid $color-primary;
+        display: inline-block;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        position:absolute;
+        top: -.2rem;
+        left: 0;
+        
+        &::after{
+            content: "";
+            background: $color-primary;
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+        }  
+    }
+    &__radio-input:checked ~ &__radio-label &__radio-button::after{
+        opacity: 1;  
+      }  
+      .m__t{
+          margin-top: 3rem;
+          @include responsive(tab-pro){
+              margin-top: 2rem;
+          }
+      }
+}

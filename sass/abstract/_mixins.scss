@@ -1,0 +1,47 @@
+@mixin clearfix{
+    &::after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+@mixin absolute-center {
+    &{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+
+
+
+
+/*
+  phone: 0 - 600px
+  tablet-protaile: 600px - 900px 
+  tablet-landscape: 900px - 1200px 
+  normal code (desktop) 1200 - 1800
+  big desktop 1800px - ~
+
+*/
+// @mixin responsive {
+//     @media (max-width: 600px) {
+//         @content
+//     }
+// }
+
+ @mixin responsive ($breakpoint) {
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 37.5em) {@content}; //600px/16px -> 37.5em
+    }
+    @if $breakpoint == tab-pro {
+        @media only screen and (max-width: 56.25em) {@content}; //900px/16px -> 56em
+    }
+    @if $breakpoint == tab-land {
+        @media only screen and (max-width: 75em) {@content}; //1200px/16px -> 75em
+    }
+    @if $breakpoint == big-desktop {
+        @media only screen and (max-width: 112.5em) {@content}; //1800px/16px -> 112.5em
+    }
+ }

@@ -1,0 +1,65 @@
+.storybox{
+    width: 75%;
+    height: 25rem;
+    background: rgba(255,255,255,0.6);
+    margin: 0 auto;
+    padding: 6rem;
+    transform: skewX(-12deg);
+    @include responsive(tab-pro){
+        width: 100%;
+        height: auto;
+        padding: 4rem;
+        transform: skewX(0);
+    }
+    @include responsive(phone){
+        width: 100%;
+        height: auto;
+        padding: 3rem;
+        transform: skewX(0);
+    }
+    &__picture{
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        margin-right: 4rem;
+        transform: skewX(12deg);  
+        position: relative;
+        
+        @include responsive(tab-pro){
+            transform: skewX(0);
+        }
+    }
+    &__texterea{
+        transform: skewX(12deg);
+        @include responsive(tab-pro){
+            transform: skewX(0);
+        }
+    }
+    &__img{
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4);
+    }
+    &__caption{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,20%);
+        color: $color-white;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+    }
+    &:hover &__caption{
+        opacity: 1;
+        transform: translate(-50%,-50%);
+    }
+    &:hover &__img{
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);  
+    }
+   
+}

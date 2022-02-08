@@ -1,0 +1,150 @@
+.navigation{
+    display: inline-block;
+    &__input{
+       display: none;
+    }
+    &__label{
+        display: inline-block;
+        background: $color-white;
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6rem;
+        right: 6rem;
+        z-index: 2000;
+        @include responsive (tab-pro){
+            top: 4rem;
+            right: 4rem;
+        }
+        @include responsive (phone){
+            top: 3rem;
+            right: 3rem;
+        }
+    }
+    &__background{
+        display: inline-block;
+        background: radial-gradient($color-green-light,$color-green-dark);
+        width: 6rem;
+        height: 5rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6.5rem;
+        right: 6.5rem;
+        z-index: 1000;
+        transition: transform .8s cubic-bezier(.86,0,.7,1);
+        @include responsive (tab-pro){
+            top: 4.5rem;
+            right: 4.5rem;
+        }
+        @include responsive (phone){
+            top: 3.5rem;
+            right: 3.5rem;
+        }
+        // transform: scale(80);
+    }
+
+    &__nav{
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1500;
+        text-align: center;
+        transition: all .8s ;
+        width: 0%;
+        opacity: 0;
+    }
+
+    &__list{
+        display: inline-block;
+        list-style: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+    &__item{
+        margin: 1.5rem;
+        
+    }
+
+    &__link{
+        &:visited,&:link{
+            font-size: 3rem;
+            font-weight: 300;
+            text-decoration: none;
+            color: $color-white;
+            padding: 1rem 2rem;
+            background: linear-gradient(120deg, transparent 0%, transparent 50%,$color-white 50%);
+            background-size: 220%;
+            transition: all .3s;
+            @include responsive(phone){
+                font-size: 2.2rem;
+                font-weight: 500;
+            }
+        }
+        &:hover,&:active{
+            background-position: 100%;
+            color: $color-primary;
+        }
+
+    }
+
+    &__input:checked ~ &__background{
+        transform: scale(80);
+       
+    }
+
+    &__input:checked ~ &__nav{
+        width: 100%;
+        opacity: 1;
+    }
+
+    &__icon{
+        & , &::before, &::after{
+        background-color: $color-light-grey;
+        display: block;
+        width: 3rem;
+        position: absolute;
+        height: 2px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        }
+        &::before{
+            content: "";
+            margin-top: -1rem;
+        }
+        &::after{
+            content: "";
+            margin-top: 1rem;
+        }
+    }
+    &__label:hover &__icon::before{
+       top: -.2rem;
+       height: 4px;
+       transition: all .3s ;
+    }
+    &__label:hover &__icon::after{
+        top: .2rem;
+        height: 3.5px;
+        transition: all .3s ;
+    }
+    &__input:checked + &__label &__icon{
+        background-color: transparent;
+    }
+    &__input:checked + &__label &__icon::before{
+        transform: rotate(-135deg);   
+        left: 0rem;
+        top: 1rem;
+        transition: all .8s;
+    }
+    &__input:checked + &__label &__icon::after{
+        transform: rotate(135deg);
+        transition: all .8s;
+        left: 0rem;
+        top: -1rem;      
+    }
+}
